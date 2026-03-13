@@ -15,7 +15,7 @@
         // F+J одновременно = переключить русский слой
         combo_rus {
             timeout-ms = <50>;
-            key-positions = <16 19>;
+            key-positions = <28 31>;
             bindings = <&tog RUS>;
         };
 
@@ -42,31 +42,20 @@
     keymap {
         compatible = "zmk,keymap";
 
-        // ---------------------------------------------------------
-        // BASE: английский QWERTY
-        // Home Row Mods (hold = mod, tap = буква):
-        //   A=Ctrl  S=Alt  D=Shift  F=GUI
-        //   J=GUI   K=Shift  L=Alt  ;=Ctrl
-        // Thumb: LOWER слой через lt (layer-tap)
-        // ---------------------------------------------------------
         default_layer {
-            bindings = <
-&kp ESC    &kp N1       &kp N2      &kp N3        &kp N4      &kp N5                              &kp N6        &kp N7       &kp N8        &kp N9      &kp N0          &kp EQUAL
-&kp TAB    &kp Q        &kp W       &kp E         &kp R       &kp T                               &kp Y         &kp U        &kp I         &kp O       &kp P           &kp MINUS
-&kp LCTRL  &hm LCTRL A  &hm LALT S  &hm LSHFT D   &hm LGUI F  &kp G                               &kp H         &hm RGUI J   &hm RSHFT K   &hm RALT L  &hm RCTRL SEMI  &kp SQT
-&kp LSHFT  &kp Z        &kp X       &kp C         &kp V       &kp B        &kp LBKT    &kp RBKT   &kp N         &kp M        &kp COMMA     &kp DOT     &kp FSLH        &kp BACKSLASH
-                                    &kp LALT      &kp LGUI    &lt LOWER GRAVE  &kp SPACE  &kp RET  &lt RAISE DELETE  &kp BSPC  &kp RGUI
+            bindings = 
+&kp ESC    &kp N1       &kp N2      &kp N3       &kp N4      &kp N5                                   &kp N6            &kp N7      &kp N8       &kp N9      &kp N0          &kp EQUAL
+&kp TAB    &kp Q        &kp W       &kp E        &kp R       &kp T                                    &kp Y             &kp U       &kp I        &kp O       &kp P           &kp MINUS
+&kp BSLH   &hm LCTRL A  &hm LALT S  &hm LSHFT D  &hm LGUI F  &kp G                                    &kp H             &hm RGUI J  &hm RSHFT K  &hm RALT L  &hm RCTRL SEMI  &kp SQT
+&kp LSHFT  &kp Z        &kp X       &kp C        &kp V       &kp B         &kp LBKT     &kp RBKT      &kp N             &kp M       &kp COMMA    &kp DOT     &kp FSLH        &kp RSHFT
+                                    &kp LALT     &kp LGUI    &lt LOWER GRAVE  &kp SPACE  &kp RET      &lt RAISE DELETE  &kp BSPC    &kp RGUI
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        // ---------------------------------------------------------
-        // LOWER: символы, F-клавиши, Bluetooth
-        // Активация: держать левый thumb (GRAVE-side)
-        // ---------------------------------------------------------
         lower_layer {
-            bindings = <
+            bindings = 
 &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                    &trans     &trans     &trans     &trans    &trans    &trans
 &kp F1      &kp F2        &kp F3        &kp F4        &kp F5        &kp F6                          &kp F7     &kp F8     &kp F9     &kp F10   &kp F11   &kp F12
 &kp GRAVE   &kp EXCL      &kp AT        &kp HASH      &kp DOLLAR    &kp PRCNT                       &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp TILDE
@@ -77,12 +66,8 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        // ---------------------------------------------------------
-        // RAISE: навигация, стрелки, цифры
-        // Активация: держать правый thumb (DELETE-side)
-        // ---------------------------------------------------------
         raise_layer {
-            bindings = <
+            bindings = 
 &trans     &trans  &trans  &trans   &trans   &trans                     &trans       &trans     &trans     &trans    &trans     &trans
 &kp GRAVE  &kp N1  &kp N2  &kp N3   &kp N4   &kp N5                     &kp N6       &kp N7     &kp N8     &kp N9    &kp N0     &trans
 &kp F1     &kp F2  &kp F3  &kp F4   &kp F5   &kp F6                     &trans       &kp LEFT   &kp DOWN   &kp UP    &kp RIGHT  &trans
@@ -93,19 +78,13 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        // ---------------------------------------------------------
-        // RUS: кириллица ЙЦУКЕН
-        // Активация: combo F+J (одновременно нажать), повтор = выкл
-        // В ОС должна быть переключена раскладка на RU
-        // Правый thumb внешний = Ъ (RBKT в RU раскладке)
-        // ---------------------------------------------------------
         rus_layer {
-            bindings = <
-&kp ESC    &kp N1       &kp N2      &kp N3        &kp N4      &kp N5                                  &kp N6            &kp N7       &kp N8        &kp N9      &kp N0          &kp EQUAL
-&kp TAB    &kp Q        &kp W       &kp E         &kp R       &kp T                                   &kp Y             &kp U        &kp I         &kp O       &kp P           &kp LBKT
-&kp LCTRL  &hm LCTRL A  &hm LALT S  &hm LSHFT D   &hm LGUI F  &kp G                                   &kp H             &hm RGUI J   &hm RSHFT K   &hm RALT L  &hm RCTRL SEMI  &kp SQT
-&kp LSHFT  &kp Z        &kp X       &kp C         &kp V       &kp B        &tog RUS      &tog RUS     &kp N             &kp M        &kp COMMA     &kp DOT     &kp FSLH        &kp BACKSLASH
-                                    &kp LALT      &kp LGUI    &lt LOWER GRAVE  &kp SPACE  &kp RET     &lt RAISE DELETE  &kp BSPC     &kp RBKT
+            bindings = 
+&kp ESC    &kp N1  &kp N2  &kp N3    &kp N4    &kp N5                                   &kp N6            &kp N7    &kp N8     &kp N9   &kp N0          &kp EQUAL
+&kp TAB    &kp Q   &kp W   &kp E     &kp R     &kp T                                    &kp Y             &kp U     &kp I      &kp O    &kp P           &kp LBKT
+&kp BSLH   &kp A   &kp S   &kp D     &kp F     &kp G                                    &kp H             &kp J     &kp K      &kp L    &hm RCTRL SEMI  &kp SQT
+&kp LSHFT  &kp Z   &kp X   &kp C     &kp V     &kp B         &tog RUS     &tog RUS      &kp N             &kp M     &kp COMMA  &kp DOT  &kp FSLH        &kp RSHFT
+                            &kp LALT  &kp LGUI  &lt LOWER GRAVE  &kp SPACE  &kp RET     &lt RAISE DELETE  &kp BSPC  &kp RBKT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;

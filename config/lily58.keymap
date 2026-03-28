@@ -15,7 +15,7 @@
 
         combo_rus {
             timeout-ms = <50>;
-            key-positions = <28 31>;
+            key-positions = <50 53>;
             bindings = <&tog RUS>;
         };
 
